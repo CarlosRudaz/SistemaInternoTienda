@@ -36,8 +36,9 @@ namespace LoDeLali
 		{
 			//LE DAMOS LOS VALORES PARA ARRANCAR LA BASE DE DATOS.
 			miBaseDeDatos = new MySqlConnection("server=" + con.Servidor +  "; PORT=" + con.Puerto + "; database= " + con.BaseDeDatos + "; uid=" + con.Usuario  +"; pwd=" + con.Contrasena);
-			//miBaseDeDatos = new MySqlConnection("server=192.168.0.113; database=lo_de_lali2022; uid=tienda;pwd=1234");  /*PARA TRABAJAR EN RED*/
-			miBaseDeDatos.Open();
+            
+            //miBaseDeDatos = new MySqlConnection("server=192.168.0.113; database=lo_de_lali2022; uid=tienda;pwd=1234");  /*PARA TRABAJAR EN RED*/
+            miBaseDeDatos.Open();
 			//GENERAMOS CONSULTA PARA QUE NOS LISTE TODOS LOS CLIENTES
 			MySqlCommand listaClientes = new MySqlCommand("SELECT * FROM cliente WHERE habilitado = " + 1 + " ORDER BY nombre;", miBaseDeDatos);
 
