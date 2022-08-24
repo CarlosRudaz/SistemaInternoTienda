@@ -72,7 +72,6 @@ C:\Users\carlo\Documents\SharpDevelop Projects\Programas C#\Lo de Lali - Desarro
 C:\Users\carlo\Documents\SharpDevelop Projects\Programas C#\Lo de Lali - Desarrollo Programa\LoDeLali\LoDeLali\bin\Debug\K4os.Compression.LZ4.Streams.dll
 C:\Users\carlo\Documents\SharpDevelop Projects\Programas C#\Lo de Lali - Desarrollo Programa\LoDeLali\LoDeLali\bin\Debug\BouncyCastle.Crypto.dll
 C:\Users\carlo\Documents\SharpDevelop Projects\Programas C#\Lo de Lali - Desarrollo Programa\LoDeLali\LoDeLali\bin\Debug\Ubiety.Dns.Core.dll
-C:\Users\carlo\Documents\SharpDevelop Projects\Programas C#\Lo de Lali - Desarrollo Programa\LoDeLali\LoDeLali\bin\Debug\System.Memory.dll
 C:\Users\carlo\Documents\SharpDevelop Projects\Programas C#\Lo de Lali - Desarrollo Programa\LoDeLali\LoDeLali\bin\Debug\System.Buffers.dll
 C:\Users\carlo\Documents\SharpDevelop Projects\Programas C#\Lo de Lali - Desarrollo Programa\LoDeLali\LoDeLali\bin\Debug\K4os.Compression.LZ4.dll
 C:\Users\carlo\Documents\SharpDevelop Projects\Programas C#\Lo de Lali - Desarrollo Programa\LoDeLali\LoDeLali\bin\Debug\K4os.Hash.xxHash.dll
