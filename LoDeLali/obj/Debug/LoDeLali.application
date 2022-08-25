@@ -7,14 +7,14 @@
     <framework targetVersion="4.8" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="LoDeLali.exe.manifest" size="10173">
+    <dependentAssembly dependencyType="install" codebase="LoDeLali.exe.manifest" size="10202">
       <assemblyIdentity name="LoDeLali.exe" version="1.0.0.2" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="x86" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>WI4CFdCbuOm2hy1CsUUCWbh/dHAkRH7lxbT6ItqOS/g=</dsig:DigestValue>
+        <dsig:DigestValue>qj5YHl/zNozBDeU/9it88aFASFAzgOlA7Kv0PGwPlsA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

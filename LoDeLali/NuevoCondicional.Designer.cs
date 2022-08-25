@@ -50,7 +50,6 @@ namespace LoDeLali
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxCelular = new System.Windows.Forms.TextBox();
             this.dateTimePickerFecha = new System.Windows.Forms.DateTimePicker();
-            this.buttonConfirmar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.richTextBoxCondicional = new System.Windows.Forms.RichTextBox();
             this.numericUpDownCantidad = new System.Windows.Forms.NumericUpDown();
@@ -60,6 +59,7 @@ namespace LoDeLali
             this.labelFecha = new System.Windows.Forms.Label();
             this.precioUni1 = new System.Windows.Forms.TextBox();
             this.producto1 = new System.Windows.Forms.TextBox();
+            this.buttonConfirmar = new System.Windows.Forms.Button();
             this.groupBoxNuevoCondicional.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -140,30 +140,12 @@ namespace LoDeLali
             // 
             // dateTimePickerFecha
             // 
-            this.dateTimePickerFecha.Enabled = false;
             this.dateTimePickerFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePickerFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerFecha.Location = new System.Drawing.Point(624, 1);
             this.dateTimePickerFecha.Name = "dateTimePickerFecha";
             this.dateTimePickerFecha.Size = new System.Drawing.Size(93, 23);
             this.dateTimePickerFecha.TabIndex = 8;
-            // 
-            // buttonConfirmar
-            // 
-            this.buttonConfirmar.BackColor = System.Drawing.Color.Transparent;
-            this.buttonConfirmar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonConfirmar.FlatAppearance.BorderSize = 0;
-            this.buttonConfirmar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonConfirmar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonConfirmar.Image = ((System.Drawing.Image)(resources.GetObject("buttonConfirmar.Image")));
-            this.buttonConfirmar.Location = new System.Drawing.Point(23, 18);
-            this.buttonConfirmar.Name = "buttonConfirmar";
-            this.buttonConfirmar.Size = new System.Drawing.Size(75, 44);
-            this.buttonConfirmar.TabIndex = 6;
-            this.buttonConfirmar.TabStop = false;
-            this.buttonConfirmar.Text = "<<<<<<<";
-            this.buttonConfirmar.UseVisualStyleBackColor = false;
-            this.buttonConfirmar.Click += new System.EventHandler(this.buttonConfirmar_Click);
             // 
             // panel1
             // 
@@ -257,6 +239,23 @@ namespace LoDeLali
             this.producto1.Name = "producto1";
             this.producto1.Size = new System.Drawing.Size(374, 23);
             this.producto1.TabIndex = 3;
+            // 
+            // buttonConfirmar
+            // 
+            this.buttonConfirmar.BackColor = System.Drawing.Color.Transparent;
+            this.buttonConfirmar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonConfirmar.FlatAppearance.BorderSize = 0;
+            this.buttonConfirmar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonConfirmar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonConfirmar.Image = ((System.Drawing.Image)(resources.GetObject("buttonConfirmar.Image")));
+            this.buttonConfirmar.Location = new System.Drawing.Point(23, 18);
+            this.buttonConfirmar.Name = "buttonConfirmar";
+            this.buttonConfirmar.Size = new System.Drawing.Size(75, 44);
+            this.buttonConfirmar.TabIndex = 6;
+            this.buttonConfirmar.TabStop = false;
+            this.buttonConfirmar.Text = "<<<<<<<";
+            this.buttonConfirmar.UseVisualStyleBackColor = false;
+            this.buttonConfirmar.Click += new System.EventHandler(this.buttonConfirmar_Click);
             // 
             // NuevoCondicional
             // 

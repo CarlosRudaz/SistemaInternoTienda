@@ -50,38 +50,44 @@ namespace LoDeLali
 
             //BUSCAMOS TODOS LOS REGISTROS DE CONDICIONAL PARA VER CUALES ESTÁN FUERA DE TÉRMINO
             DateTime fechaActual = DateTime.Now;
-            string fecha;
-            DataTable tabla = new DataTable();
+            //string fecha;
+            DateTime fecha1 = new DateTime();
+
+            DataTable condicionales = new DataTable();
             consulta = "SELECT * FROM condicional";
-            tabla = formularioPadre.GetBD(consulta);
+            condicionales = formularioPadre.GetBD(consulta);
 
             dataGridViewSinAgendar.ClearSelection();
             dataGridViewAgendados.ClearSelection();
 
             //RECORREMOS "TABLA" PARA SACAR LAS DIFERENCIAS DE FECHA CON LA FECHA ACTUAL
-            for (int i = 0; i < tabla.Rows.Count-1; i++)
+            for (int i = 0; i < condicionales.Rows.Count; i++)
             {
-                fecha = tabla.Rows[i]["fecha"].ToString();
-                TimeSpan diferenciaDeDias = fechaActual.Subtract(Convert.ToDateTime(fecha));
-                //MessageBox.Show(fecha + "  " +diferenciaDeDias.Days);
-                if (diferenciaDeDias.Hours >= 24 && tabla.Rows[i]["cliente_idcliente"] != null)
+                //fecha = condicionales.Rows[i]["fecha"].ToString();
+                
+                fecha1 = Convert.ToDateTime(condicionales.Rows[i]["fecha"].ToString());
+
+                TimeSpan diferenciaDeDias = fechaActual.Subtract(fecha1);
+                
+                if (diferenciaDeDias.Days > 0 && condicionales.Rows[i]["cliente_idcliente"] != null)
                 {
-                    for (int j = 0; j < dataGridViewAgendados.Rows.Count-1; j++)
+                    for (int j = 0; j < dataGridViewAgendados.Rows.Count; j++)
                     {
-                        if (dataGridViewAgendados.Rows[j].Cells["idcliente"].Value.ToString() == tabla.Rows[i]["cliente_idcliente"].ToString())
+                        if (dataGridViewAgendados.Rows[j].Cells["idcliente"].Value.ToString() == condicionales.Rows[i]["cliente_idcliente"].ToString())
                         {
                             dataGridViewAgendados.Rows[j].DefaultCellStyle.BackColor = Color.Red;
+                            
                         }
                         
                     }
                     
                 }
                 //MessageBox.Show(tabla.Rows[i]["nocliente_idNoCliente"].ToString());
-                if (diferenciaDeDias.Hours >= 24 && tabla.Rows[i]["nocliente_idNoCliente"] != null)
+                if (diferenciaDeDias.Days > 0 && condicionales.Rows[i]["nocliente_idnoCliente"] != null)
                 {
-                    for (int j = 0; j < dataGridViewSinAgendar.Rows.Count - 1; j++)
+                    for (int j = 0; j < dataGridViewSinAgendar.Rows.Count; j++)
                     {
-                        if (dataGridViewSinAgendar.Rows[j].Cells["idNoCliente"].Value.ToString() == tabla.Rows[i]["nocliente_idNoCliente"].ToString())
+                        if (dataGridViewSinAgendar.Rows[j].Cells["idNoCliente"].Value.ToString() == condicionales.Rows[i]["nocliente_idNoCliente"].ToString())
                         {
                             dataGridViewSinAgendar.Rows[j].DefaultCellStyle.BackColor = Color.Red;
                         }
