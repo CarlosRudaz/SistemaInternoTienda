@@ -4,11 +4,7 @@
   <description asmv2:iconFile="lo-de-lali-icono.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-<<<<<<< HEAD
-    <assemblyIdentity name="LoDeLali" version="1.0.8289.34707" language="neutral" processorArchitecture="x86" />
-=======
-    <assemblyIdentity name="LoDeLali" version="1.0.8272.33611" language="neutral" processorArchitecture="x86" />
->>>>>>> ba3cc06495b14f4acda3087651a7390ced285b19
+    <assemblyIdentity name="LoDeLali" version="1.0.8289.35345" language="neutral" processorArchitecture="x86" />
     <commandLine file="LoDeLali.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -47,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BouncyCastle.Crypto.dll" size="3316968">
-      <assemblyIdentity name="BouncyCastle.Crypto" version="1.9.0.0" publicKeyToken="0E99375E54769942" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BouncyCastle.Crypto.dll" size="2531328">
+      <assemblyIdentity name="BouncyCastle.Crypto" version="1.8.5.0" publicKeyToken="0E99375E54769942" language="neutral" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>5Rch3AZH9IOLGrxZK9lf2MuSRxbopk+D1LlHgh+h+kI=</dsig:DigestValue>
+        <dsig:DigestValue>pkUxy9puRCzT8+NR1z1AhrzgCfuXnvkLKPb6RRIvXI8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -107,35 +103,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-<<<<<<< HEAD
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="LoDeLali.exe" size="1595840">
-      <assemblyIdentity name="LoDeLali" version="1.0.8289.34707" language="neutral" processorArchitecture="x86" />
-=======
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="LoDeLali.exe" size="1592768">
-      <assemblyIdentity name="LoDeLali" version="1.0.8272.33611" language="neutral" processorArchitecture="x86" />
->>>>>>> ba3cc06495b14f4acda3087651a7390ced285b19
+      <assemblyIdentity name="LoDeLali" version="1.0.8289.35345" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-<<<<<<< HEAD
-        <dsig:DigestValue>EUsSFugYbF3VpQZJgZb3BUtAyulcInLX99REyucqhcA=</dsig:DigestValue>
-=======
-        <dsig:DigestValue>DcOAaLXRA0hfU8n9gFrEHO88oLTRPPwYGHoBdUPmO0I=</dsig:DigestValue>
->>>>>>> ba3cc06495b14f4acda3087651a7390ced285b19
+        <dsig:DigestValue>H1L954fOtq0Iu+eanI6oXd53pxI+gf2ja1gkunnkLt4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MySql.Data.dll" size="1441792">
-      <assemblyIdentity name="MySql.Data" version="8.0.30.0" publicKeyToken="C5687FC88969C44D" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MySql.Data.dll" size="1439232">
+      <assemblyIdentity name="MySql.Data" version="8.0.29.0" publicKeyToken="C5687FC88969C44D" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Z83GW4RAjwGBFhbP/Xmdq8+6FPXDcKVQYJt8ME3OW4U=</dsig:DigestValue>
+        <dsig:DigestValue>8utk9zDdUMe9UT8Auf6GXb0ZWCXtFFumIo8mudWExcI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
