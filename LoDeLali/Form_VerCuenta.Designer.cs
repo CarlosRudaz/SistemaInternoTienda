@@ -218,13 +218,13 @@ namespace LoDeLali
             // dateTimePicker1
             // 
             this.dateTimePicker1.CustomFormat = "yyyy-mm-dd";
-            this.dateTimePicker1.Enabled = false;
             this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker1.Location = new System.Drawing.Point(146, 61);
             this.dateTimePicker1.MinDate = new System.DateTime(2022, 7, 6, 0, 0, 0, 0);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(360, 30);
             this.dateTimePicker1.TabIndex = 1;
+            this.dateTimePicker1.TabStop = false;
             this.dateTimePicker1.Value = new System.DateTime(2022, 7, 6, 0, 0, 0, 0);
             // 
             // labelProducto
@@ -362,12 +362,12 @@ namespace LoDeLali
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(747, 502);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.buttonAtras);
             this.Controls.Add(this.buttonDescargar);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

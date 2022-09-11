@@ -4,7 +4,11 @@
   <description asmv2:iconFile="lo-de-lali-icono.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
+<<<<<<< HEAD
     <assemblyIdentity name="LoDeLali" version="1.0.8270.37287" language="neutral" processorArchitecture="x86" />
+=======
+    <assemblyIdentity name="LoDeLali" version="1.0.8272.33394" language="neutral" processorArchitecture="x86" />
+>>>>>>> ba3cc06495b14f4acda3087651a7390ced285b19
     <commandLine file="LoDeLali.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -103,14 +107,23 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+<<<<<<< HEAD
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="LoDeLali.exe" size="1588160">
       <assemblyIdentity name="LoDeLali" version="1.0.8270.37287" language="neutral" processorArchitecture="x86" />
+=======
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="LoDeLali.exe" size="4092864">
+      <assemblyIdentity name="LoDeLali" version="1.0.8272.33394" language="neutral" processorArchitecture="x86" />
+>>>>>>> ba3cc06495b14f4acda3087651a7390ced285b19
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+<<<<<<< HEAD
         <dsig:DigestValue>v1Q9vZYHxSfthy/VJyALk+PElXwp9ItvultNaoh4H8A=</dsig:DigestValue>
+=======
+        <dsig:DigestValue>H/1MIPE/sQbm5fvnMXvhhfAD4FJXiFAFgpZNkELSdHA=</dsig:DigestValue>
+>>>>>>> ba3cc06495b14f4acda3087651a7390ced285b19
       </hash>
     </dependentAssembly>
   </dependency>

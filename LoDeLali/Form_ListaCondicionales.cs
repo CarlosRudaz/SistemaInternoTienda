@@ -21,10 +21,10 @@ namespace LoDeLali
 
         public void ListaCondicionales_Load(object sender, EventArgs e)
         {
-            //tabla con los condicionales de clientes registrados
+            //condicionales con los condicionales de clientes registrados
             clientesConCondicional = con.RecibirDatosDeBD("SELECT * FROM IdCliente WHERE condicional = " + 1 + ";");
 
-            //tabla con los condicionales de personas que son clientes y no cuentan con cuenta corriente
+            //condicionales con los condicionales de personas que son clientes y no cuentan con cuenta corriente
             noClientesConCondicional = con.RecibirDatosDeBD("SELECT * FROM nocliente;");
 
             //MOSTRAMOS DATA GRID DE CLIENTES CON CONDICIONAL
@@ -43,37 +43,38 @@ namespace LoDeLali
             //BUSCAMOS TODOS LOS REGISTROS DE CONDICIONAL PARA VER CUALES ESTÁN FUERA DE TÉRMINO
             DateTime fechaActual = DateTime.Now;
             string fecha;
-            DataTable tabla = new DataTable();
-            tabla = con.RecibirDatosDeBD("SELECT * FROM condicional");
+            DataTable condicionales = new DataTable();
+            condicionales = con.RecibirDatosDeBD("SELECT * FROM condicional");
 
             //limpiamos selección
             dataGridViewSinAgendar.ClearSelection();
             dataGridViewAgendados.ClearSelection();
 
             //RECORREMOS "TABLA" PARA SACAR LAS DIFERENCIAS DE FECHA CON LA FECHA ACTUAL
-            for (int i = 0; i < tabla.Rows.Count-1; i++)
+            for (int i = 0; i < condicionales.Rows.Count; i++)
             {
-                fecha = tabla.Rows[i]["fecha"].ToString();
+                fecha = condicionales.Rows[i]["fecha"].ToString();
                 TimeSpan diferenciaDeDias = fechaActual.Subtract(Convert.ToDateTime(fecha));
                 //Recorremos todos los condicionales de clientes para ver si alguno está registrado hace más de un día
-                if (diferenciaDeDias.Hours >= 24 && tabla.Rows[i]["cliente_idcliente"] != null)
+                if (diferenciaDeDias.Hours >= 24 && condicionales.Rows[i]["cliente_idcliente"] != null)
                 {
-                    for (int j = 0; j < dataGridViewAgendados.Rows.Count-1; j++)
+                    for (int j = 0; j < dataGridViewAgendados.Rows.Count; j++)
                     {
-                        if (dataGridViewAgendados.Rows[j].Cells["idcliente"].Value.ToString() == tabla.Rows[i]["cliente_idcliente"].ToString())
+                        if (dataGridViewAgendados.Rows[j].Cells["idcliente"].Value.ToString() == condicionales.Rows[i]["cliente_idcliente"].ToString())
                         {
                             dataGridViewAgendados.Rows[j].DefaultCellStyle.BackColor = Color.Red;
+                            
                         }
                         
                     }
                     
                 }
                 //Recorremos todos los condicionales de NO clientes para ver si alguno está registrado hace más de un día
-                if (diferenciaDeDias.Hours >= 24 && tabla.Rows[i]["nocliente_idNoCliente"] != null)
+                if (diferenciaDeDias.Hours >= 24 && condicionales.Rows[i]["nocliente_idNoCliente"] != null)
                 {
-                    for (int j = 0; j < dataGridViewSinAgendar.Rows.Count - 1; j++)
+                    for (int j = 0; j < dataGridViewSinAgendar.Rows.Count; j++)
                     {
-                        if (dataGridViewSinAgendar.Rows[j].Cells["idNoCliente"].Value.ToString() == tabla.Rows[i]["nocliente_idNoCliente"].ToString())
+                        if (dataGridViewSinAgendar.Rows[j].Cells["idNoCliente"].Value.ToString() == condicionales.Rows[i]["nocliente_idNoCliente"].ToString())
                         {
                             dataGridViewSinAgendar.Rows[j].DefaultCellStyle.BackColor = Color.Red;
                         }
