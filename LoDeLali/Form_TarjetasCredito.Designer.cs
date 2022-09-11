@@ -8,7 +8,7 @@
  */
 namespace LoDeLali
 {
-	partial class TarjetasCredito
+	partial class Form_TarjetasCredito
 	{
 		/// <summary>
 		/// Designer variable used to keep track of non-visual components.
@@ -48,7 +48,7 @@ namespace LoDeLali
 		/// </summary>
 		private void InitializeComponent()
 		{
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TarjetasCredito));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_TarjetasCredito));
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelCuota4 = new System.Windows.Forms.Label();
             this.labelCuota3 = new System.Windows.Forms.Label();

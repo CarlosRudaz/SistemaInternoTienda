@@ -88,64 +88,65 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AgregarCliente.cs">
+    <Compile Include="Clases\Conexion.cs" />
+    <Compile Include="Form_AgregarCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AgregarCliente.Designer.cs">
-      <DependentUpon>AgregarCliente.cs</DependentUpon>
+    <Compile Include="Form_AgregarCliente.Designer.cs">
+      <DependentUpon>Form_AgregarCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="Clases\ConexionBD.cs" />
+    <Compile Include="Clases\Datos_ConexionBD.cs" />
     <Compile Include="Clases\NoCliente.cs" />
     <Compile Include="Clases\Condicional.cs" />
     <Compile Include="Clases\Cliente.cs" />
     <Compile Include="Clases\CuentasCorrientes.cs" />
     <Compile Include="Clases\VentasContado.cs" />
-    <Compile Include="VerCondicionalNoCliente.cs">
+    <Compile Include="Form_VerCondicionalNoCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VerCondicionalNoCliente.Designer.cs">
-      <DependentUpon>VerCondicionalNoCliente.cs</DependentUpon>
+    <Compile Include="Form_VerCondicionalNoCliente.Designer.cs">
+      <DependentUpon>Form_VerCondicionalNoCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="VerCondicional.cs">
+    <Compile Include="Form_VerCondicional.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VerCondicional.Designer.cs">
-      <DependentUpon>VerCondicional.cs</DependentUpon>
+    <Compile Include="Form_VerCondicional.Designer.cs">
+      <DependentUpon>Form_VerCondicional.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListaCondicionales.cs">
+    <Compile Include="Form_ListaCondicionales.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ListaCondicionales.Designer.cs">
-      <DependentUpon>ListaCondicionales.cs</DependentUpon>
+    <Compile Include="Form_ListaCondicionales.Designer.cs">
+      <DependentUpon>Form_ListaCondicionales.cs</DependentUpon>
     </Compile>
-    <Compile Include="NuevoCondicional.cs">
+    <Compile Include="Form_NuevoCondicional.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NuevoCondicional.Designer.cs">
-      <DependentUpon>NuevoCondicional.cs</DependentUpon>
+    <Compile Include="Form_NuevoCondicional.Designer.cs">
+      <DependentUpon>Form_NuevoCondicional.cs</DependentUpon>
     </Compile>
-    <Compile Include="MensajeCondicional.cs">
+    <Compile Include="Form_MensajeCondicional.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MensajeCondicional.Designer.cs">
-      <DependentUpon>MensajeCondicional.cs</DependentUpon>
+    <Compile Include="Form_MensajeCondicional.Designer.cs">
+      <DependentUpon>Form_MensajeCondicional.cs</DependentUpon>
     </Compile>
-    <Compile Include="Morosos.cs">
+    <Compile Include="Form_Morosos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Morosos.Designer.cs">
-      <DependentUpon>Morosos.cs</DependentUpon>
+    <Compile Include="Form_Morosos.Designer.cs">
+      <DependentUpon>Form_Morosos.cs</DependentUpon>
     </Compile>
-    <Compile Include="RegistroPagoEfectivo.cs">
+    <Compile Include="Form_RegistroPagoEfectivo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RegistroPagoEfectivo.Designer.cs">
-      <DependentUpon>RegistroPagoEfectivo.cs</DependentUpon>
+    <Compile Include="Form_RegistroPagoEfectivo.Designer.cs">
+      <DependentUpon>Form_RegistroPagoEfectivo.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -155,17 +156,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TarjetasCredito.cs">
+    <Compile Include="Form_TarjetasCredito.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TarjetasCredito.Designer.cs">
-      <DependentUpon>TarjetasCredito.cs</DependentUpon>
+    <Compile Include="Form_TarjetasCredito.Designer.cs">
+      <DependentUpon>Form_TarjetasCredito.cs</DependentUpon>
     </Compile>
-    <Compile Include="VerCuenta.cs">
+    <Compile Include="Form_VerCuenta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VerCuenta.Designer.cs">
-      <DependentUpon>VerCuenta.cs</DependentUpon>
+    <Compile Include="Form_VerCuenta.Designer.cs">
+      <DependentUpon>Form_VerCuenta.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -173,42 +174,42 @@
     <None Include="LoDeLali_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AgregarCliente.resx">
-      <DependentUpon>AgregarCliente.cs</DependentUpon>
+    <EmbeddedResource Include="Form_AgregarCliente.resx">
+      <DependentUpon>Form_AgregarCliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VerCondicionalNoCliente.resx">
-      <DependentUpon>VerCondicionalNoCliente.cs</DependentUpon>
+    <EmbeddedResource Include="Form_VerCondicionalNoCliente.resx">
+      <DependentUpon>Form_VerCondicionalNoCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="VerCondicional.resx">
-      <DependentUpon>VerCondicional.cs</DependentUpon>
+    <EmbeddedResource Include="Form_VerCondicional.resx">
+      <DependentUpon>Form_VerCondicional.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ListaCondicionales.resx">
-      <DependentUpon>ListaCondicionales.cs</DependentUpon>
+    <EmbeddedResource Include="Form_ListaCondicionales.resx">
+      <DependentUpon>Form_ListaCondicionales.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NuevoCondicional.resx">
-      <DependentUpon>NuevoCondicional.cs</DependentUpon>
+    <EmbeddedResource Include="Form_NuevoCondicional.resx">
+      <DependentUpon>Form_NuevoCondicional.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MensajeCondicional.resx">
-      <DependentUpon>MensajeCondicional.cs</DependentUpon>
+    <EmbeddedResource Include="Form_MensajeCondicional.resx">
+      <DependentUpon>Form_MensajeCondicional.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Morosos.resx">
-      <DependentUpon>Morosos.cs</DependentUpon>
+    <EmbeddedResource Include="Form_Morosos.resx">
+      <DependentUpon>Form_Morosos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RegistroPagoEfectivo.resx">
-      <DependentUpon>RegistroPagoEfectivo.cs</DependentUpon>
+    <EmbeddedResource Include="Form_RegistroPagoEfectivo.resx">
+      <DependentUpon>Form_RegistroPagoEfectivo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TarjetasCredito.resx">
-      <DependentUpon>TarjetasCredito.cs</DependentUpon>
+    <EmbeddedResource Include="Form_TarjetasCredito.resx">
+      <DependentUpon>Form_TarjetasCredito.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VerCuenta.resx">
-      <DependentUpon>VerCuenta.cs</DependentUpon>
+    <EmbeddedResource Include="Form_VerCuenta.resx">
+      <DependentUpon>Form_VerCuenta.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>

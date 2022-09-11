@@ -8,7 +8,7 @@
  */
 namespace LoDeLali
 {
-	partial class Morosos
+	partial class Form_Morosos
 	{
 		/// <summary>
 		/// Designer variable used to keep track of non-visual components.
@@ -41,7 +41,7 @@ namespace LoDeLali
 		{
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Morosos));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Morosos));
             this.dataGridViewMorosos = new System.Windows.Forms.DataGridView();
             this.buttonVolver = new System.Windows.Forms.Button();
             this.buttonWhatsapp = new System.Windows.Forms.Button();
@@ -122,7 +122,7 @@ namespace LoDeLali
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(122, 140);
             this.label1.TabIndex = 2;
-            this.label1.Text = "*Si el contacto \r\ndel cliente no \r\nposee número \r\nde celular, no \r\nserá posible \r" +
+            this.label1.Text = "*Si el contacto \r\ndel IdCliente no \r\nposee número \r\nde celular, no \r\nserá posible \r" +
     "\nconectarse con \r\nwhatsapp web.";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 

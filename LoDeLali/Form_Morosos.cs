@@ -10,15 +10,16 @@ using System;
 using System.Diagnostics;
 using System.Windows.Forms;
 using System.Data;
+using LoDeLali.Clases;
 
 namespace LoDeLali
 {
 	/// <summary>
 	/// Description of Morosos.
 	/// </summary>
-	public partial class Morosos : Form
+	public partial class Form_Morosos : Form
 	{
-		public Morosos()
+		public Form_Morosos()
 		{
 			//
 			// The InitializeComponent() call is required for Windows Forms designer support.
@@ -30,29 +31,35 @@ namespace LoDeLali
 			//
 		}
 		
-		public MainForm formularioPadre;
-		int cliente;
+		public MainForm FormularioPadre { get; set; }
+
+		public int IdCliente { get; set; }
+
+		private Conexion con = new Conexion();
 		
 		
 		void MorososLoad(object sender, EventArgs e)
 		{
 			
-			string consulta, fechaUltimaEntrega;
+			string fechaUltimaEntrega;
 			
 			DateTime fechaActual = DateTime.Now.Date;
 			TimeSpan diferenciaDeDias;
-			DataTable listaDeEntregas = new DataTable();
-			DataTable listaClientes = new DataTable();
-			listaClientes = formularioPadre.GetBD("SELECT * FROM cliente WHERE habilitado = "+ 1 + ";");
+
 			DataTable listaMorosos = new DataTable();
+
+			DataTable listaDeEntregas = new DataTable();
+
+			DataTable listaClientes = con.RecibirDatosDeBD("SELECT * FROM IdCliente WHERE habilitado = " + 1 + ";");
+			
 			//LE DAMOS EL FORMATO DE LAS TABLAS CON LAS QUE ESTAMOS TRABAJANDO, ASI NO 
 			//GENERA PROBLEMAS AL IMPORTAR FILAS
 			listaMorosos = listaClientes.Clone();
 			
-			for (int i = 0; i < listaClientes.Rows.Count; i++) {
-				cliente = Convert.ToInt32(listaClientes.Rows[i]["idCliente"]);
-				consulta = "SELECT * FROM cuentascorrientes WHERE cliente_idCliente = "+ cliente + " AND descripcion = 'ENTREGA';";
-				listaDeEntregas = formularioPadre.GetBD(consulta);
+			for (int i = 0; i < listaClientes.Rows.Count; i++) 
+			{
+				IdCliente = Convert.ToInt32(listaClientes.Rows[i]["IdCliente"]);
+				listaDeEntregas = con.RecibirDatosDeBD("SELECT * FROM cuentascorrientes WHERE cliente_idCliente = " + IdCliente + " AND descripcion = 'ENTREGA';");
 				
 				try 
 				{
@@ -64,10 +71,11 @@ namespace LoDeLali
 					{
 						//PARA ESTE PASO CLONAMOS LA TABLA MAS ARRIBA
 						listaMorosos.ImportRow(listaClientes.Rows[i]);
-						consulta = "UPDATE cliente SET moroso = " + 1 + " WHERE idcliente =" + cliente + ";";
-						formularioPadre.CrudBD(consulta);
+						con.ModificarDatosBD("UPDATE IdCliente SET moroso = " + 1 + " WHERE idcliente =" + IdCliente + ";");
 					}
-				} catch (Exception) {
+				} 
+				catch (Exception) 
+				{
 					
 					continue;
 				}
@@ -75,7 +83,7 @@ namespace LoDeLali
 
 			dataGridViewMorosos.DataSource = listaMorosos;
 			dataGridViewMorosos.Columns["habilitado"].Visible = false;
-			dataGridViewMorosos.Columns["idCliente"].Visible = false;
+			dataGridViewMorosos.Columns["IdCliente"].Visible = false;
 			dataGridViewMorosos.Columns["moroso"].Visible = false;
 			dataGridViewMorosos.Columns["condicional"].Visible = false;
 			dataGridViewMorosos.ClearSelection();
@@ -89,14 +97,12 @@ namespace LoDeLali
 		void DataGridViewMorososCellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
 		{
 			//VARIABLE GLOBAL			
-			cliente = Convert.ToInt32(dataGridViewMorosos.CurrentRow.Cells["idCliente"].Value.ToString());
+			IdCliente = Convert.ToInt32(dataGridViewMorosos.CurrentRow.Cells["IdCliente"].Value.ToString());
 			
 			//CREAMOS UN NUEVO FORMULARIO DE VERCUENTA Y GUARDAMOS EL FORMULARIO PRINCIPAL EN FORMULARIOPADRE
-			VerCuenta verCuenta = new VerCuenta();
-			verCuenta.formularioPadre = formularioPadre;
-			verCuenta.cliente = formularioPadre.cargarCliente(cliente);
-			
-			
+			Form_VerCuenta verCuenta = new Form_VerCuenta();
+			verCuenta.FormularioPadre = FormularioPadre;
+			verCuenta.Cliente = con.CargarCliente(IdCliente);
 			verCuenta.ShowDialog();
 		}
 		

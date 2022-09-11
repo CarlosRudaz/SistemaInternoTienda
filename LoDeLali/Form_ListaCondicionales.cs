@@ -1,60 +1,52 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using LoDeLali.Clases;
+using System;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LoDeLali
 {
-    public partial class ListaCondicionales : Form
+    public partial class Form_ListaCondicionales : Form
     {
-        public ListaCondicionales()
+        public Form_ListaCondicionales()
         {
             InitializeComponent();
         }
 
+        public MainForm FormularioPadre { get; set; }
 
-        public MainForm formularioPadre;
+        private DataTable clientesConCondicional, noClientesConCondicional;
+        private Conexion con = new Conexion();
+        private int idCliente;
 
         public void ListaCondicionales_Load(object sender, EventArgs e)
         {
+            //tabla con los condicionales de clientes registrados
+            clientesConCondicional = con.RecibirDatosDeBD("SELECT * FROM IdCliente WHERE condicional = " + 1 + ";");
 
-            string consulta = "SELECT * FROM cliente WHERE condicional = " + 1 + ";";
-            DataTable clientesConCondicional = new DataTable();
-            clientesConCondicional = formularioPadre.GetBD(consulta);
-
-
-            consulta = "SELECT * FROM nocliente;";
-            DataTable noClientesConCondicional = new DataTable();
-            noClientesConCondicional = formularioPadre.GetBD(consulta);
+            //tabla con los condicionales de personas que son clientes y no cuentan con cuenta corriente
+            noClientesConCondicional = con.RecibirDatosDeBD("SELECT * FROM nocliente;");
 
             //MOSTRAMOS DATA GRID DE CLIENTES CON CONDICIONAL
             dataGridViewAgendados.DataSource = clientesConCondicional;
-            dataGridViewAgendados.Columns["idCliente"].Visible = false;
+            dataGridViewAgendados.Columns["IdCliente"].Visible = false;
             dataGridViewAgendados.Columns["moroso"].Visible = false;
             dataGridViewAgendados.Columns["habilitado"].Visible = false;
             dataGridViewAgendados.Columns["condicional"].Visible = false;
             dataGridViewAgendados.Columns["celular"].Visible = false;
-
 
             //MOSTRAMOS DATA GRID DE NO CLIENTES CON CONDICIONALES
             dataGridViewSinAgendar.DataSource = noClientesConCondicional;
             dataGridViewSinAgendar.Columns["idNoCliente"].Visible = false;
             dataGridViewSinAgendar.Columns["celular"].Visible = false;
             
-            
-
             //BUSCAMOS TODOS LOS REGISTROS DE CONDICIONAL PARA VER CUALES ESTÁN FUERA DE TÉRMINO
             DateTime fechaActual = DateTime.Now;
             string fecha;
             DataTable tabla = new DataTable();
-            consulta = "SELECT * FROM condicional";
-            tabla = formularioPadre.GetBD(consulta);
+            tabla = con.RecibirDatosDeBD("SELECT * FROM condicional");
 
+            //limpiamos selección
             dataGridViewSinAgendar.ClearSelection();
             dataGridViewAgendados.ClearSelection();
 
@@ -63,7 +55,7 @@ namespace LoDeLali
             {
                 fecha = tabla.Rows[i]["fecha"].ToString();
                 TimeSpan diferenciaDeDias = fechaActual.Subtract(Convert.ToDateTime(fecha));
-                //MessageBox.Show(fecha + "  " +diferenciaDeDias.Days);
+                //Recorremos todos los condicionales de clientes para ver si alguno está registrado hace más de un día
                 if (diferenciaDeDias.Hours >= 24 && tabla.Rows[i]["cliente_idcliente"] != null)
                 {
                     for (int j = 0; j < dataGridViewAgendados.Rows.Count-1; j++)
@@ -76,7 +68,7 @@ namespace LoDeLali
                     }
                     
                 }
-                //MessageBox.Show(tabla.Rows[i]["nocliente_idNoCliente"].ToString());
+                //Recorremos todos los condicionales de NO clientes para ver si alguno está registrado hace más de un día
                 if (diferenciaDeDias.Hours >= 24 && tabla.Rows[i]["nocliente_idNoCliente"] != null)
                 {
                     for (int j = 0; j < dataGridViewSinAgendar.Rows.Count - 1; j++)
@@ -92,25 +84,24 @@ namespace LoDeLali
 
         private void dataGridViewAgendados_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            int idCliente = Convert.ToInt32(dataGridViewAgendados.CurrentRow.Cells["idcliente"].Value.ToString());
+            idCliente = Convert.ToInt32(dataGridViewAgendados.CurrentRow.Cells["idcliente"].Value.ToString());
 
-            VerCondicional verCondicional = new VerCondicional();
-            verCondicional.formularioPadre = formularioPadre;
-            verCondicional.idCliente = idCliente;
-            verCondicional.listaCondicionales = this;
+            Form_VerCondicional verCondicional = new Form_VerCondicional();
+            verCondicional.FormularioPadre = FormularioPadre;
+            verCondicional.IdCliente = idCliente;
+            verCondicional.ListaCondicionales = this;
             //this.Close();
             verCondicional.ShowDialog();
         }
 
         private void dataGridViewSinAgendar_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            int idCliente = Convert.ToInt32(dataGridViewSinAgendar.CurrentRow.Cells["idNoCliente"].Value.ToString());
+            idCliente = Convert.ToInt32(dataGridViewSinAgendar.CurrentRow.Cells["idNoCliente"].Value.ToString());
 
-            VerCondicionalNoCliente verCondicional = new VerCondicionalNoCliente();
-            
-            verCondicional.formularioPadre = formularioPadre;
-            verCondicional.idCliente = idCliente;
-            verCondicional.listaCondicionales = this;
+            Form_VerCondicionalNoCliente verCondicional = new Form_VerCondicionalNoCliente();
+            verCondicional.FormularioPadre = FormularioPadre;
+            verCondicional.IdCliente = idCliente;
+            verCondicional.ListaCondicionales = this;
             //this.Hide();
             verCondicional.ShowDialog();
         }
@@ -118,7 +109,7 @@ namespace LoDeLali
         private void buttonAtras_Click(object sender, EventArgs e)
         {
             Close();
-            formularioPadre.Show();
+            FormularioPadre.Show();
         }
     }
 }

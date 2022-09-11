@@ -6,6 +6,7 @@
  * 
  * Para cambiar esta plantilla use Herramientas | Opciones | Codificación | Editar Encabezados Estándar
  */
+using LoDeLali.Clases;
 using System;
 using System.Data;
 using System.Drawing;
@@ -16,9 +17,9 @@ namespace LoDeLali
 	/// <summary>
 	/// Description of Condicional.
 	/// </summary>
-	public partial class NuevoCondicional : Form
+	public partial class Form_NuevoCondicional : Form
 	{
-		public NuevoCondicional()
+		public Form_NuevoCondicional()
 		{
 			//
 			// The InitializeComponent() call is required for Windows Forms designer support.
@@ -30,25 +31,22 @@ namespace LoDeLali
 			//
 		}
 
-		public MainForm formularioPadre;
-		public int idCliente;
-		public bool esCliente;
+		public MainForm FormularioPadre { get; set; }
+		public int IdCliente { get; set; }
+		public bool EsCliente { get; set; }
 
 		//GRABADO SE USA PARA QUE AL NO SER CLIENTE SE GENERE UN SOLO CLIENTE Y NO SE PUEDA MODIFICAR
-		bool grabado = true;
-		Cliente cliente = new Cliente();
-		string consulta;
+		private bool grabado = true;
+		private Cliente cliente = new Cliente();
+		private string consulta;
+		private Conexion con = new Conexion();
 
 		private Cliente ObtenerNoCliente(string nombre)
         {
 			grabado = false;
-			string consulta = "SELECT * FROM nocliente WHERE nombre = '" + nombre + "';";
-			DataTable tabla = new DataTable();
-			tabla = formularioPadre.GetBD(consulta);
-
-			Cliente cliente = new Cliente();
+			DataTable tabla = con.RecibirDatosDeBD("SELECT * FROM nocliente WHERE Nombre = '" + nombre + "';");
 			
-			cliente.Nombre = tabla.Rows[0]["nombre"].ToString();
+			cliente.Nombre = tabla.Rows[0]["Nombre"].ToString();
 			cliente.Id = Convert.ToInt32(tabla.Rows[0]["idNoCliente"]);
 			cliente.Celular = tabla.Rows[0]["celular"].ToString();
 
@@ -57,27 +55,24 @@ namespace LoDeLali
 
         private void buttonAgregarFila_Click(object sender, EventArgs e)
         {
-			
-            if (esCliente)
+            if (EsCliente)
             {
                 try
                 {
 					if (grabado)
 					{
-						consulta = "UPDATE cliente SET condicional = true WHERE idcliente = " + idCliente + ";";
-						formularioPadre.CrudBD(consulta);
+						con.ModificarDatosBD("UPDATE IdCliente SET condicional = true WHERE idcliente = " + IdCliente + ";");
 						grabado = false;
 					}
-					Clases.Condicional condicional = new Clases.Condicional(cliente.Nombre,
+
+					Condicional condicional = new Condicional(cliente.Nombre,
 						dateTimePickerFecha.Value.ToString("dd/MM/yyyy HH:mm"), producto1.Text.ToUpper(), Convert.ToDouble(precioUni1.Text),
 						Convert.ToInt32(numericUpDownCantidad.Text));
 
-					consulta = "INSERT INTO condicional (fecha,producto,precioUni,precioTotal,cantidad,cliente_idcliente) " +
+					con.ModificarDatosBD("INSERT INTO condicional (fecha,producto,precioUni,precioTotal,cantidad,cliente_idcliente) " +
 										"VALUES('" + condicional.Fecha + "','" + condicional.Producto + "'," +
 										condicional.PreciosUni + "," + condicional.PrecioTotal + "," +
-										condicional.Cantidades + "," + cliente.Id + ");";
-
-					formularioPadre.CrudBD(consulta);
+										condicional.Cantidades + "," + cliente.Id + ");");
 
 					richTextBoxCondicional.Text += condicional.Cantidades.ToString() + "###" + condicional.Producto.ToString() + "###" +
 												condicional.PreciosUni.ToString() + "###" + condicional.PrecioTotal.ToString() + Environment.NewLine;
@@ -93,8 +88,7 @@ namespace LoDeLali
                 {
 					if (grabado)
                     {
-						consulta = "INSERT INTO nocliente(nombre,celular) VALUES('" + textBoxNombre.Text.ToUpper() + "','" + textBoxCelular.Text + "'); ";
-						formularioPadre.CrudBD(consulta);
+						con.ModificarDatosBD("INSERT INTO nocliente(Nombre,celular) VALUES('" + textBoxNombre.Text.ToUpper() + "','" + textBoxCelular.Text + "'); ");
 						
 						cliente = ObtenerNoCliente(textBoxNombre.Text);
 
@@ -105,21 +99,17 @@ namespace LoDeLali
 
 						grabado = false;
 					}
+					
+					Condicional condicional = new Condicional(cliente.Nombre.ToUpper(),
+																dateTimePickerFecha.Value.ToString("dd/MM/yyyy HH:mm"), 
+																producto1.Text.ToUpper(), 
+																Convert.ToDouble(precioUni1.Text),
+																Convert.ToInt32(numericUpDownCantidad.Text));
 
-					Clases.Condicional condicional = new Clases.Condicional(cliente.Nombre.ToUpper(),
-																			dateTimePickerFecha.Value.ToString("dd/MM/yyyy HH:mm"), 
-																			producto1.Text.ToUpper(), 
-																			Convert.ToDouble(precioUni1.Text),
-																			Convert.ToInt32(numericUpDownCantidad.Text));
-
-					consulta = "INSERT INTO condicional (fecha,cantidad,producto,precioUni,precioTotal,nocliente_idNoCliente) " +
+					con.ModificarDatosBD("INSERT INTO condicional (fecha,cantidad,producto,precioUni,precioTotal,nocliente_idNoCliente) " +
 									"VALUES('" + condicional.Fecha + "'," + condicional.Cantidades + ",'" +
 									condicional.Producto + "'," + condicional.PreciosUni + "," +
-									condicional.PrecioTotal + "," + cliente.Id + ");";
-
-					
-
-					formularioPadre.CrudBD(consulta);
+									condicional.PrecioTotal + "," + cliente.Id + ");");
 
 					richTextBoxCondicional.Text +=  condicional.Cantidades.ToString() + "  ###  " + condicional.Producto + "             ###  " +
 												condicional.PreciosUni.ToString() + "  ###  " + condicional.PrecioTotal.ToString() + Environment.NewLine;
@@ -141,12 +131,11 @@ namespace LoDeLali
         {
 			AutoCompleteStringCollection lista = new AutoCompleteStringCollection();
 
-			consulta = "SELECT * FROM noCliente;";
-			dt = formularioPadre.GetBD(consulta);
+            dt = con.RecibirDatosDeBD("SELECT * FROM noCliente;");
 
             for (int i = 0; i < dt.Rows.Count; i++)
             {
-                lista.Add(dt.Rows[i]["nombre"].ToString());
+                lista.Add(dt.Rows[i]["Nombre"].ToString());
             }
 
 			textBoxNombre.AutoCompleteCustomSource = lista;
@@ -160,9 +149,9 @@ namespace LoDeLali
         private void NuevoCondicional_Load(object sender, EventArgs e)
         {
 			AutoCompletarNombreCliente();
-			if (esCliente)
+			if (EsCliente)
 			{
-				cliente = formularioPadre.cargarCliente(idCliente);
+				cliente = con.CargarCliente(IdCliente);
 				textBoxCelular.Text = cliente.Celular;
 				textBoxNombre.Text = cliente.Nombre;
 				textBoxCelular.Enabled = false;

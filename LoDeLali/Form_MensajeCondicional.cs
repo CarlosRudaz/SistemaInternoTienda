@@ -3,9 +3,9 @@ using System.Windows.Forms;
 
 namespace LoDeLali
 {
-    public partial class MensajeCondicional : Form
+    public partial class Form_MensajeCondicional : Form
     {
-        public MensajeCondicional()
+        public Form_MensajeCondicional()
         {
             InitializeComponent();
         }
@@ -14,17 +14,17 @@ namespace LoDeLali
 
         private void buttonNuevoCondicional_Click(object sender, EventArgs e)
         {
-            NuevoCondicional condicional = new NuevoCondicional();
-            condicional.formularioPadre = formularioPadre;
-            condicional.idCliente = idCliente;
+            Form_NuevoCondicional condicional = new Form_NuevoCondicional();
+            condicional.FormularioPadre = formularioPadre;
+            condicional.IdCliente = idCliente;
             Hide();
             condicional.ShowDialog();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ListaCondicionales listaCondicionales = new ListaCondicionales();
-            listaCondicionales.formularioPadre = formularioPadre;
+            Form_ListaCondicionales listaCondicionales = new Form_ListaCondicionales();
+            listaCondicionales.FormularioPadre = formularioPadre;
             Hide();
             listaCondicionales.ShowDialog();
 

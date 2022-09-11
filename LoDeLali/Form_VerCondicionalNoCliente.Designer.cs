@@ -1,6 +1,6 @@
 ﻿namespace LoDeLali
 {
-    partial class VerCondicionalNoCliente
+    partial class Form_VerCondicionalNoCliente
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VerCondicionalNoCliente));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_VerCondicionalNoCliente));
             this.buttonConfirmar = new System.Windows.Forms.Button();
             this.labelCelular = new System.Windows.Forms.Label();
             this.labelNombre = new System.Windows.Forms.Label();
@@ -73,7 +73,7 @@
             this.labelNombre.Name = "labelNombre";
             this.labelNombre.Size = new System.Drawing.Size(105, 31);
             this.labelNombre.TabIndex = 5;
-            this.labelNombre.Text = "nombre";
+            this.labelNombre.Text = "Nombre";
             // 
             // dataGridViewCondicional
             // 

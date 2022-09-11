@@ -16,9 +16,9 @@ namespace LoDeLali
 	/// <summary>
 	/// Description of TarjetasCredito.
 	/// </summary>
-	public partial class TarjetasCredito : Form
+	public partial class Form_TarjetasCredito : Form
 	{
-		public TarjetasCredito()
+		public Form_TarjetasCredito()
 		{
 			//
 			// The InitializeComponent() call is required for Windows Forms designer support.

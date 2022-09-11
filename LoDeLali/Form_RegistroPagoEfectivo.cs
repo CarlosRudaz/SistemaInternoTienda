@@ -11,7 +11,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Data;
-
+using LoDeLali.Clases;
 
 namespace LoDeLali
 {
@@ -33,7 +33,9 @@ namespace LoDeLali
 		}
 		
 		//VARIABLE QUE NOS PERMITE TENER EL VALOR DEL FORMULARIO PADRE
-		public MainForm formularioPadre;
+		public MainForm FormularioPadre { get; set; }
+
+		private Conexion con = new Conexion();
 		
 		void Button1Click(object sender, EventArgs e)
 		{
@@ -42,10 +44,8 @@ namespace LoDeLali
 				double monto = Convert.ToDouble(textBoxMonto.Text);
 				
 				//GENERAMOS LA CONSULTA QUE ENVIAMOS A LA BASE DE DATOS
-				string consulta = "INSERT INTO ventas(producto,monto)VALUES('" + producto +"', " + monto + " );";
-				
-				//METODO UBICADO EN MAINFORM QUE RECIBE CONSULTA Y SE COMUNICA CON LA BD
-				formularioPadre.CrudBD(consulta);
+				con.ModificarDatosBD("INSERT INTO ventas(producto,monto)VALUES('" + producto +"', " + monto + " );");
+
 				Close();
 			} catch (Exception ex) {
 				MessageBox.Show("Revise los datos ingresados... ERROR --->>" + ex);
@@ -54,7 +54,7 @@ namespace LoDeLali
 
 		private void button2_Click(object sender, EventArgs e)
 		{
-			formularioPadre.Show();
+			FormularioPadre.Show();
 			Close();
 		}
 	}

@@ -12,16 +12,17 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.IO;
+using LoDeLali.Clases;
 
 namespace LoDeLali
 {
 	/// <summary>
 	/// Description of VerCuenta.
 	/// </summary>
-	public partial class VerCuenta : Form
+	public partial class Form_VerCuenta : Form
 	{
 		//CONSTRUCTOR
-		public VerCuenta()
+		public Form_VerCuenta()
 		{
 			//
 			// The InitializeComponent() call is required for Windows Forms designer support.
@@ -34,10 +35,13 @@ namespace LoDeLali
 		}
 		
 		//VARIABLE QUE CONTIENE EL FORMULARIO PADRE/RAIZ
-		public MainForm formularioPadre;
-		public Cliente cliente;
-		public CuentasCorrientes ultimoRegistro = new CuentasCorrientes();
-		DataTable datosCuentasCorrientes = new DataTable(), datosCliente = new DataTable();
+		public MainForm FormularioPadre { get; set; }
+		public Cliente Cliente { get; set; }
+		public CuentasCorrientes UltimoRegistro { get; set; }
+
+		private DataTable datosCuentasCorrientes, datosCliente;
+
+		private Conexion con = new Conexion();
 		
 		
 		public void limpiarFormularioDeRegistro()
@@ -49,11 +53,9 @@ namespace LoDeLali
 		
 		public void ActualizarLista()
 		{
-			string consulta = "SELECT * FROM cuentascorrientes WHERE cliente_idCliente = " + cliente.Id + ";";
-			
 			//DATOSTABLA ES UN TIPO DATETABLE INICIALIZADA GLOBAL PARA USAR EN CUALQUIER METODO
-			dataGridViewCuentas.DataSource = formularioPadre.GetBD(consulta);
-			dataGridViewCuentas.Columns["cliente_idCliente"].Visible = false;
+			dataGridViewCuentas.DataSource = con.RecibirDatosDeBD("SELECT * FROM cuentascorrientes WHERE cliente_idCliente = " + Cliente.Id + ";");
+            dataGridViewCuentas.Columns["cliente_idCliente"].Visible = false;
 			dataGridViewCuentas.Columns[0].Width = 85;
 			dataGridViewCuentas.Columns[1].Width = 250;
 			dataGridViewCuentas.Columns[2].Width = 45;
@@ -63,17 +65,17 @@ namespace LoDeLali
 
 		}
 		
-		
 		//CARGAMOS LAS TABLAS AL ABRIR EL FORMULARIO
 		void VerCuentaShown(object sender, EventArgs e)
 		{
-			if (cliente.Condicional)
+			if (Cliente.Condicional)
 			{
 				labelAvisoCondicional.Visible = true;
 			}
 
-			ultimoRegistro = formularioPadre.cargarUltimoRegistro(cliente.Id);
-			if (ultimoRegistro.Saldo <= 0) {
+			UltimoRegistro = FormularioPadre.cargarUltimoRegistro(Cliente.Id);
+			if (UltimoRegistro.Saldo <= 0) 
+			{
 				labelAvisoCuentaPagada.Visible = true;
 				labelAvisoCuentaPagada.Text = "¡CLIENTE AL DÍA!";
 				checkBoxEntrega.Visible = false;
@@ -86,14 +88,13 @@ namespace LoDeLali
 
 			ActualizarLista();
 			//GUARDAMOS LOS VALORES QUE ESTÁN EN LA TABLA.			
-			labelNombreCliente.Text = cliente.Nombre;
-			labelCelular.Text = cliente.Celular;
+			labelNombreCliente.Text = Cliente.Nombre;
+			labelCelular.Text = Cliente.Celular;
 		}
 		
 		void ButtonAgregarRegistroClick(object sender, EventArgs e)
 		{
-			
-			if (cliente.Habilitado) {
+			if (Cliente.Habilitado) {
 				buttonDescargar.Visible = false;
 				panel2.Visible = false;
 				panel1.Visible = true;
@@ -101,7 +102,7 @@ namespace LoDeLali
 			}
 			else
 			{
-				MessageBox.Show("Para agregar registros se debe habilitar al cliente desde la lista de borrados...",
+				MessageBox.Show("Para agregar registros se debe habilitar al IdCliente desde la lista de borrados...",
 				                "Falta Autorización", 
 				                MessageBoxButtons.OK,MessageBoxIcon.Stop);
 				Close();
@@ -112,7 +113,7 @@ namespace LoDeLali
 		void ButtonNuevoRegistroClick(object sender, EventArgs e)
 		{	
 			this.ControlBox = false;
-			ultimoRegistro = formularioPadre.cargarUltimoRegistro(cliente.Id);
+			UltimoRegistro = FormularioPadre.cargarUltimoRegistro(Cliente.Id);
 			try {
 				double total = 0, entrega = Convert.ToDouble(textBoxPrecio.Text), saldo = 0, 
 						compra = entrega;
@@ -121,56 +122,51 @@ namespace LoDeLali
 				//TOMAMOS EL VALOR DE LA FECHA 
 				string fecha = DateTime.Now.ToString("dd/MM/yyyy HH:mm");/*dateTimePicker1.Value.ToString()/*dateTimePicker1.Value.ToString("yyyy-MM-dd HH:mm")*/;
 				
-				string consulta = "SELECT * FROM cuentascorrientes WHERE cliente_idCliente = " 
-					+ cliente.Id + ";";
 				
-				datosCuentasCorrientes = formularioPadre.GetBD(consulta);
+				
+				datosCuentasCorrientes = con.RecibirDatosDeBD("SELECT * FROM cuentascorrientes WHERE cliente_idCliente = " + Cliente.Id + ";");
 				//datosCuentasCorrientes.Columns["producto"].ToString() == "ENTREGA";
 				
-				if (checkBoxEntrega.Checked) {
-					total = ultimoRegistro.Saldo;
+				if (checkBoxEntrega.Checked) 
+				{
+					total = UltimoRegistro.Saldo;
 				 	saldo = total;
 					saldo -= entrega;
 					compra = 0;
 				}
 				else
 				{
-					total = ultimoRegistro.Saldo;
+					total = UltimoRegistro.Saldo;
 				 	saldo = total;
 					saldo += compra;
 					entrega = 0;
 				}
 
 				try{
-					consulta = "INSERT INTO cuentascorrientes(fecha,descripcion,compra,total,entrega,saldo,cliente_idcliente)"+
+					con.ModificarDatosBD("INSERT INTO cuentascorrientes(fecha,descripcion,compra,total,entrega,saldo,cliente_idcliente)"+
 					"VALUES('" + fecha + "', '" + descripcion.ToUpper() + "', " + compra + ", " + total + ", " + entrega  + ", " + 
-						saldo + ", " + cliente.Id + ");";
-					
-					formularioPadre.CrudBD(consulta);
-					
+						saldo + ", " + Cliente.Id + ");");
+
 					limpiarFormularioDeRegistro();
 					
 					MessageBox.Show("Nuevo Registro Agregado");
 					
 					if (saldo == 0.00) {
 						checkBoxEntrega.Visible = false;
-						consulta = "UPDATE cliente SET habilitado = 0 WHERE idCliente = " + cliente.Id + ";";
-						formularioPadre.CrudBD(consulta);
+						con.ModificarDatosBD("UPDATE IdCliente SET habilitado = 0 WHERE IdCliente = " + Cliente.Id + ";");
 						
-						DialogResult mensaje = MessageBox.Show("¿Desea eliminar el historial de este usuario?", 
+						DialogResult mensaje = MessageBox.Show("¿Desea eliminar el historial de este Usuario?", 
 						                                       "ATENCIÓN", MessageBoxButtons.YesNo,
 						                                       MessageBoxIcon.Exclamation, 
 						                                       MessageBoxDefaultButton.Button1);
 						
-						consulta = "DELETE FROM cuentascorrientes WHERE cliente_idCliente = " + cliente.Id + ";";
 						if (mensaje == DialogResult.Yes) {
-							formularioPadre.CrudBD(consulta);
-						}
+                            con.ModificarDatosBD("DELETE FROM cuentascorrientes WHERE cliente_idCliente = " + Cliente.Id + ";");
+                        }
 						
 						checkBoxEntrega.Checked = false;
 						
 						Close();
-						
 					}
 					else
 					{
@@ -178,11 +174,15 @@ namespace LoDeLali
 					}
 					
 					
-				}catch(Exception ex){
+				}
+				catch(Exception ex)
+				{
 					MessageBox.Show("ERROR: " + ex);
 				}
 				
-			} catch (Exception ex) {
+			} 
+			catch (Exception ex) 
+			{
 				MessageBox.Show("Controle datos ingresados  ---->> " + ex);
 			}
 		}
@@ -223,7 +223,7 @@ namespace LoDeLali
 		private void buttonAtras_Click(object sender, EventArgs e)
 		{
 			this.Close();
-			formularioPadre.Show();
+			FormularioPadre.Show();
 		}
 
         //IMPRESION ################################################################
@@ -257,7 +257,7 @@ namespace LoDeLali
 			ep.Graphics.DrawString("CUENTA CORRIENTE", new Font("Segoe UI", 30, FontStyle.Bold), Brushes.Black, left + 230, top);
 			top += 65;//85
 				
-			ep.Graphics.DrawString("CLIENTE: " + cliente.Nombre, new Font("Segoe UI", 30, FontStyle.Bold), Brushes.Black, left, top);
+			ep.Graphics.DrawString("CLIENTE: " + Cliente.Nombre, new Font("Segoe UI", 30, FontStyle.Bold), Brushes.Black, left, top);
 			top += 70; //85
 
             if (dataGridViewCuentas.Rows.Count < 12)

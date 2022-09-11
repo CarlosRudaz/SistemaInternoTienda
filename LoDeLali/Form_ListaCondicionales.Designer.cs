@@ -1,6 +1,6 @@
 ﻿namespace LoDeLali
 {
-    partial class ListaCondicionales
+    partial class Form_ListaCondicionales
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListaCondicionales));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_ListaCondicionales));
             this.dataGridViewAgendados = new System.Windows.Forms.DataGridView();
             this.dataGridViewSinAgendar = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();

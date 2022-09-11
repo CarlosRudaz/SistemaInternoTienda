@@ -8,7 +8,7 @@
  */
 namespace LoDeLali
 {
-	partial class AgregarCliente
+	partial class Form_AgregarCliente
 	{
 		/// <summary>
 		/// Designer variable used to keep track of non-visual components.
@@ -42,7 +42,7 @@ namespace LoDeLali
 		/// </summary>
 		private void InitializeComponent()
 		{
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AgregarCliente));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_AgregarCliente));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();

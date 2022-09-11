@@ -8,7 +8,7 @@
  */
 namespace LoDeLali
 {
-	partial class VerCuenta
+	partial class Form_VerCuenta
 	{
 		/// <summary>
 		/// Designer variable used to keep track of non-visual components.
@@ -56,7 +56,7 @@ namespace LoDeLali
 		private void InitializeComponent()
 		{
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VerCuenta));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_VerCuenta));
             this.labelNombreCliente = new System.Windows.Forms.Label();
             this.labelCelular = new System.Windows.Forms.Label();
             this.dataGridViewCuentas = new System.Windows.Forms.DataGridView();

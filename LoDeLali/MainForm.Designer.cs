@@ -74,7 +74,7 @@ namespace LoDeLali
             this.buttonMorosos = new System.Windows.Forms.Button();
             this.panelBotonesInicio = new System.Windows.Forms.Panel();
             this.linkLabelPrecios = new System.Windows.Forms.LinkLabel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonCerrar = new System.Windows.Forms.Button();
             this.groupBoxCuentasCorrientes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBuscarCuentasCorrientes)).BeginInit();
             this.panelBuscarCuentasCorrientes.SuspendLayout();
@@ -353,7 +353,7 @@ namespace LoDeLali
             // 
             this.panelBotonesInicio.BackColor = System.Drawing.Color.Transparent;
             this.panelBotonesInicio.Controls.Add(this.linkLabelPrecios);
-            this.panelBotonesInicio.Controls.Add(this.button1);
+            this.panelBotonesInicio.Controls.Add(this.buttonCerrar);
             this.panelBotonesInicio.Controls.Add(this.buttonMorosos);
             this.panelBotonesInicio.Controls.Add(this.buttonEfectivo);
             this.panelBotonesInicio.Controls.Add(this.buttonCuentaCorriente);
@@ -376,31 +376,31 @@ namespace LoDeLali
             this.linkLabelPrecios.TabStop = true;
             this.linkLabelPrecios.Text = "Precios";
             this.linkLabelPrecios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.linkLabelPrecios.Click += new System.EventHandler(this.LinkLabel1Click);
+            this.linkLabelPrecios.Click += new System.EventHandler(this.LinkLabelListaPrecios_Click);
             // 
-            // button1
+            // buttonCerrar
             // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button1.CausesValidation = false;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Red;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe Print", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button1.Location = new System.Drawing.Point(670, 427);
-            this.button1.Margin = new System.Windows.Forms.Padding(0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(51, 50);
-            this.button1.TabIndex = 0;
-            this.button1.TabStop = false;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonCerrar.BackColor = System.Drawing.Color.Transparent;
+            this.buttonCerrar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonCerrar.BackgroundImage")));
+            this.buttonCerrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonCerrar.CausesValidation = false;
+            this.buttonCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonCerrar.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.buttonCerrar.FlatAppearance.BorderSize = 0;
+            this.buttonCerrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.buttonCerrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.buttonCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonCerrar.Font = new System.Drawing.Font("Segoe Print", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.buttonCerrar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.buttonCerrar.Location = new System.Drawing.Point(670, 427);
+            this.buttonCerrar.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonCerrar.Name = "buttonCerrar";
+            this.buttonCerrar.Size = new System.Drawing.Size(51, 50);
+            this.buttonCerrar.TabIndex = 0;
+            this.buttonCerrar.TabStop = false;
+            this.buttonCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.buttonCerrar.UseVisualStyleBackColor = false;
+            this.buttonCerrar.Click += new System.EventHandler(this.buttonCerrar_Click);
             // 
             // MainForm
             // 
@@ -428,6 +428,6 @@ namespace LoDeLali
 
 		}
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonCerrar;
     }
 }

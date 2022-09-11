@@ -8,7 +8,7 @@
  */
 namespace LoDeLali
 {
-	partial class NuevoCondicional
+	partial class Form_NuevoCondicional
 	{
 		/// <summary>
 		/// Designer variable used to keep track of non-visual components.
@@ -42,7 +42,7 @@ namespace LoDeLali
 		/// </summary>
 		private void InitializeComponent()
 		{
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NuevoCondicional));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_NuevoCondicional));
             this.groupBoxNuevoCondicional = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
